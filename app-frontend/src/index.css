@@ -100,41 +100,105 @@ button:focus-visible {
 }
 
 @media (max-width: 640px) {
-  .product-card {
-    width: 90%; /* Make product card fill the screen */
-    margin: auto;
+  :root {
+    font-size: 14px; /* Smaller base font size for smaller screens */
   }
+
   body {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden; /* Prevent horizontal scroll issues */
+    display: block; /* Stack content vertically */
+    place-items: unset; /* Remove unnecessary centering */
+    padding: 0 10px; /* Add horizontal padding */
   }
-  
-  .swiper {
-    width: 100%;
-    height: auto;
+
+  h1 {
+    font-size: 2em; /* Reduce the title size */
+    text-align: center; /* Center align the title */
   }
-  
-  .swiper-slide {
-    display: flex;          /* Use flexbox for centering */
-    justify-content: center;
-    align-items: center;
+
+  .page-title {
+    font-size: 30px; /* Reduce page title size */
+    text-align: center; /* Center align the page title */
+    margin-bottom: 15px; /* Reduce spacing */
   }
+
+  .product-card {
+    width: 100%; /* Full width of the screen */
+    margin-bottom: 20px; /* Add spacing between cards */
+    padding: 10px;
+  }
+
   .image-container {
-    /*display: flex;*/
-    justify-content: left; /* Center horizontally */
-    align-items: left; /* Center vertically */
-    margin-bottom: 10px; /* Space below the image */
+    margin-bottom: 8px; /* Reduce spacing below the image */
   }
+
   .product-image {
-    width: 100px;
-    height: 100px;
-    object-fit: cover; /* Maintain aspect ratio while filling the container */
-    border-radius: 8px; /* Smooth edges */
-    margin-bottom: 10px; /* Spacing below the image */
+    width: 150px; /* Smaller product image */
+    height: 150px;
+    margin: 0 auto; /* Center the image horizontally */
+  }
+
+  .product-name {
+    font-size: 14px; /* Smaller font size for product name */
+    margin-bottom: 5px;
+  }
+
+  .product-price {
+    font-size: 13px; /* Smaller font size for price */
+  }
+
+  .color-options {
+    font-size: 11px; /* Smaller font for color options */
+    display: flex; /* Inline layout for options */
+    justify-content: center; /* Center the options */
+    margin-top: 8px;
+  }
+
+  .color-circle {
+    width: 10px; /* Smaller color circles */
+    height: 10px;
+    margin: 0 5px; /* Adjust spacing between circles */
+  }
+
+  .selected-color {
+    font-size: 11px; /* Smaller font for selected color text */
+    text-align: center; /* Center the text */
+  }
+
+  .product-rating {
+    font-size: 12px; /* Smaller font for rating */
+    text-align: center; /* Center the rating */
+  }
+
+  .progress-bar-container {
+    height: 10px; /* Smaller height for progress bar */
+    margin-top: 15px; /* Reduce spacing above the progress bar */
+  }
+
+  .progress-handle {
+    width: 100px; /* Slightly smaller handle */
+    height: 15px;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    font-size: 18px !important; /* Adjust arrow size */
+    top: auto !important; /* Adjust position for smaller screens */
+    bottom: 10px !important; /* Move arrows to below the slider */
+  }
+
+  .swiper-button-next {
+    right: 20px !important;
+  }
+
+  .swiper-button-prev {
+    left: 20px !important;
+  }
+
+  .star {
+    font-size: 16px; /* Adjust star size */
   }
 }
+
 
 
 .border {
