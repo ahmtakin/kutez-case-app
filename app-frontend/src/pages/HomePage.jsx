@@ -12,7 +12,7 @@ const HomePage = () => {
   const [error, setError] = useState(null);
   const [selectedColors, setSelectedColors] = useState({});
 
-  // Fetch products from the backend
+  // Fetch products with dynamic prices from the backend
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -47,7 +47,6 @@ const HomePage = () => {
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold mb-6 text-center">Products Carousel</h1>
       <Swiper
         loop={true} // Enable infinite loop
         spaceBetween={20}
@@ -70,6 +69,11 @@ const HomePage = () => {
                 alt={`${product.name} - ${selectedColors[product.name]}`}
                 className="w-full h-48 object-cover mt-4 rounded"
               />
+
+              {/* Product Price */}
+              <p className="text-xl font-semibold text-green-600 mt-2">
+                Price: ${product.price}
+              </p>
 
               <p className="mt-4">Popularity: {(product.popularityScore / 100 * 5).toFixed(1)} / 5</p>
               <p>Weight: {product.weight}g</p>
