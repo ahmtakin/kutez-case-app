@@ -143,6 +143,8 @@ button:focus-visible {
   object-fit: cover; /* Maintain aspect ratio while filling the container */
   border-radius: 8px; /* Smooth edges */
   margin-bottom: 10px; /* Spacing below the image */
+  max-width: 100%; /* Ensure images never overflow */
+  height: auto;    /* Maintain aspect ratio */
 }
 
 .product-name {
