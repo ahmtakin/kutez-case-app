@@ -114,7 +114,12 @@ const HomePage = () => {
         }}
       >
         {products.map((product, index) => (
-          <SwiperSlide key={index}>
+          <SwiperSlide key={index}
+          style={{
+            display: 'flex',
+            justifyContent: 'center', // Center horizontally
+            alignItems: 'center',    // Center vertically
+          }}>
             <div className="product-card">
               {/* Product Image */}
               <div

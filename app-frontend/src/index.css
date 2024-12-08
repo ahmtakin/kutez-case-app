@@ -59,6 +59,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background-color: #FFFFFF;
+  overflow-x: hidden;
 }
 
 h1 {
@@ -98,6 +99,31 @@ button:focus-visible {
   }
 }
 
+@media (max-width: 640px) {
+  .product-card {
+    width: 90%; /* Make product card fill the screen */
+    margin: auto;
+  }
+  body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scroll issues */
+  }
+  
+  .swiper {
+    width: 100%;
+    height: auto;
+  }
+  
+  .swiper-slide {
+    display: flex;          /* Use flexbox for centering */
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+
 .border {
   border: 1px solid #e5e7eb;
 }
@@ -126,10 +152,11 @@ button:focus-visible {
 .product-card {
   text-align: 'left' !important;
   background-color: #FFFFFF;
-  padding: 20px;
+  padding: 10px;
+  margin: auto;
   /*border-radius: 8px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);*/
-  text-align: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;*/
 }
 .image-container {
   display: flex;
@@ -143,8 +170,6 @@ button:focus-visible {
   object-fit: cover; /* Maintain aspect ratio while filling the container */
   border-radius: 8px; /* Smooth edges */
   margin-bottom: 10px; /* Spacing below the image */
-  max-width: 100%; /* Ensure images never overflow */
-  height: auto;    /* Maintain aspect ratio */
 }
 
 .product-name {
