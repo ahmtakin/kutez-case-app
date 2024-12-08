@@ -122,15 +122,7 @@ const HomePage = () => {
           }}>
             <div className="product-card">
               {/* Product Image */}
-              <div
-                className="image-container"
-                style={{
-                  display: 'flex', // Enables flexbox
-                  justifyContent: 'center', // Centers the image horizontally
-                  alignItems: 'center', // Centers the image vertically
-                  marginBottom: '10px', // Spacing below the image
-                }}
-              >
+              <div className="image-container">
               <img
                 src={product.images[selectedColors[product.name]] || 'https://via.placeholder.com/150'}
                 alt={`${product.name} - ${selectedColors[product.name]}`}
