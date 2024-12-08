@@ -121,6 +121,19 @@ button:focus-visible {
     justify-content: center;
     align-items: center;
   }
+  .image-container {
+    display: flex;
+    justify-content: left; /* Center horizontally */
+    align-items: left; /* Center vertically */
+    margin-bottom: 10px; /* Space below the image */
+  }
+  .product-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover; /* Maintain aspect ratio while filling the container */
+    border-radius: 8px; /* Smooth edges */
+    margin-bottom: 10px; /* Spacing below the image */
+  }
 }
 
 
