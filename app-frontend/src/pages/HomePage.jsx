@@ -6,6 +6,7 @@ import 'swiper/swiper-bundle.css';
 
 // Register Swiper modules
 SwiperCore.use([Navigation, Controller]);
+const API_URL = import.meta.env.VITE_API_URL;
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
@@ -18,7 +19,7 @@ const HomePage = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('/api/products');
+        const response = await axios.get(`${API_URL}/api/products`);
         console.log('Fetched products:', response.data); // Debug log
         setProducts(response.data);
 

@@ -3,16 +3,16 @@ import react from '@vitejs/plugin-react'
 import dotenv from 'dotenv'
 
 dotenv.config();
-const API_ENDPOINT=process.env.API_ENDPOINT;
+//const API_ENDPOINT=process.env.API_ENDPOINT;
 
 export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
       '/api': {
-        target: API_ENDPOINT, // Backend server
+        target: process.env.VITE_API_URL || 'http://localhost:5000',
         changeOrigin: true,
-        secure: false,
+        rewrite: (path) => path.replace(/^\/api/, ''),
       },
     },
   },
