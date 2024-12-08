@@ -148,8 +148,8 @@ button:focus-visible {
 
   .color-options {
     font-size: 11px; /* Smaller font for color options */
-    text-align: left;
-    display: flex; /* Inline layout for options */
+   /*text-align: left;
+    /*display: flex; /* Inline layout for options */
     justify-content: left; /* Center the options */
     margin-top: 8px;
   }
@@ -188,11 +188,11 @@ button:focus-visible {
   }
 
   .swiper-button-next {
-    right: 25px !important;
+    margin-right: 5px !important;
   }
 
   .swiper-button-prev {
-    left: 25px !important;
+    margin-left: 5px !important;
   }
 
   .star {
