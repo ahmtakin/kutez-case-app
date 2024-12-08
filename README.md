@@ -11,3 +11,5 @@ This is my implementation on the case given to me by kutez. This project consist
 - There are no emulator on my local machine, thus all changes done for mobile had been pushed to production. Not an issue since this is a mock application, wanted to mention.
 - I tried using vercel to publish website but found render on my way. I figured out the problem is not with the service it is with the code but I was already doing what I need to do on render so I kept continuing there.
 
+### Note ###
+Since I have used a free version of render, the website can take a little while to load and initialize. After the server is initialized, it will work just fine.
