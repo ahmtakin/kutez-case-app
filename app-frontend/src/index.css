@@ -124,7 +124,7 @@ button:focus-visible {
 }
 
 .product-card {
-  text-align: 'left';
+  text-align: 'left' !important;
   background-color: #FFFFFF;
   padding: 20px;
   /*border-radius: 8px;
@@ -146,6 +146,7 @@ button:focus-visible {
 }
 
 .product-name {
+  text-align: left;
   font-family: 'Montserrat', sans-serif;
   font-size: 15px;
   font-weight: 500; /* Medium weight */
@@ -155,18 +156,26 @@ button:focus-visible {
 /* Style for product price */
 .product-price {
   font-family: 'Montserrat', sans-serif !important;
+  text-align: left;
   font-size: 15px !important;
   font-weight: 400; /* Regular weight */
   color: #666666;
 }
 
 .color-options {
+  text-align: left;
   font-family: 'Avenir Book', sans-serif !important;
   font-size: 12px !important;
   font-weight: normal;
   color: #444444; /* Adjust color if needed */
 }
-
+.selected-color{
+  text-align: left;
+  font-family: 'Avenir Book', sans-serif !important;
+  font-size: 12px !important;
+  font-weight: normal;
+  color: #444444; /* Adjust color if needed */
+}
 .color-circle {
   width: 12px;
   height: 12px;
@@ -201,15 +210,17 @@ button:focus-visible {
   z-index: 1000  !important; /* Ensure buttons are above all other content */
   position: fixed !important; /* Fix buttons to the screen */
   top: 50% !important; /* Vertically center the buttons */
-  transform: translateY(-50%) !important; /* Adjust for proper vertical centering */
+  transform: translateY(-25%) !important; /* Adjust for proper vertical centering */
   cursor: pointer !important; 
 }
 .swiper-button-next {
   right: 15px !important;/* Push button to the right of the Swiper container */
+  margin-right: 40px;
 }
 
 .swiper-button-prev {
   left: 15px !important; /* Push button to the left of the Swiper container */
+  margin-left: 40px;
 }
 
 .swiper-button-next::after,
@@ -243,6 +254,7 @@ button:focus-visible {
   color: #E0E0E0; /* Default gray for the empty part */
 }
 .product-rating {
+  text-align: left;
   font-family: 'Avenir Book', sans-serif;
   font-size: 14px;
   font-weight: normal;

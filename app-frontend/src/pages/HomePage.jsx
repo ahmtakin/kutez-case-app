@@ -190,15 +190,7 @@ const HomePage = () => {
                 ></div>
               </div>
               {/* Selected Color Display */}
-              <p
-                className="selected-color"
-                style={{
-                  marginTop: '10px',
-                  fontSize: '14px',
-                  color: '#333333', // Dark color for better readability
-                  fontStyle: 'italic', // Optional: Italicize for emphasis
-                }}
-              >
+              <p className="selected-color">
                 {selectedColors[product.name] === 'yellow'
                   ? 'Yellow Gold'
                   : selectedColors[product.name] === 'white'
@@ -206,14 +198,7 @@ const HomePage = () => {
                   : 'Rose Gold'}
               </p>
               {/* Product Rating */}
-              <div
-                className="product-rating"
-                style={{
-                  display: 'flex', // Align stars and numeric value in a row
-                  alignItems: 'center', // Vertically align the stars and number
-                  marginTop: '8px',
-                }}
-              >
+              <div className="product-rating">
                 {renderStars(product.popularityScore)}
                 <span>
                   {((product.popularityScore / 100) * 5).toFixed(1)} / 5
