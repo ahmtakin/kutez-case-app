@@ -3,6 +3,29 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Avenir Book */
+@font-face {
+  font-family: 'Avenir Book';
+  src: url('./assets/fonts/Avenir-Book.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Montserrat Medium */
+@font-face {
+  font-family: 'Montserrat';
+  src: url('./assets/fonts/Montserrat-Medium.ttf') format('truetype');
+  font-weight: 500; /* Medium weight */
+  font-style: normal;
+}
+
+/* Montserrat Regular */
+@font-face {
+  font-family: 'Montserrat';
+  src: url('./assets/fonts/Montserrat-Regular.ttf') format('truetype');
+  font-weight: 400; /* Regular weight */
+  font-style: normal;
+}
 
 
 :root {
@@ -92,13 +115,20 @@ button:focus-visible {
 }
 
 
+.page-title {
+  font-family: 'Avenir Book', sans-serif;
+  font-size: 45px;
+  font-weight: normal;
+  color: #333333; /* Adjust the color as needed */
+  margin-bottom: 30px;
+}
 
 .product-card {
   text-align: 'left';
   background-color: #FFFFFF;
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  /*border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);*/
   text-align: center;
 }
 .image-container {
@@ -108,30 +138,33 @@ button:focus-visible {
   margin-bottom: 10px; /* Space below the image */
 }
 .product-image {
-  width: 150px;
-  height: 150px;
+  width: 250px;
+  height: 250px;
   object-fit: cover; /* Maintain aspect ratio while filling the container */
   border-radius: 8px; /* Smooth edges */
   margin-bottom: 10px; /* Spacing below the image */
 }
 
 .product-name {
-  font-size: 18px;
-  font-weight: bold;
-  margin-top: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  font-weight: 500; /* Medium weight */
+  color: #333333; /* Spacing between the title and price*/
 }
 
 /* Style for product price */
 .product-price {
-  font-size: 16px;
-  color: #333333;
-  margin-top: 8px;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 400; /* Regular weight */
+  color: #666666;
 }
 
 .color-options {
-  display: flex;
-  gap: 5px;
-  margin-top: 10px;
+  font-family: 'Avenir Book', sans-serif !important;
+  font-size: 12px !important;
+  font-weight: normal;
+  color: #444444; /* Adjust color if needed */
 }
 
 .color-circle {
@@ -209,3 +242,43 @@ button:focus-visible {
   display: inline-block;
   color: #E0E0E0; /* Default gray for the empty part */
 }
+.product-rating {
+  font-family: 'Avenir Book', sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  color: #333333;
+}
+
+/* Progress Bar Container */
+.progress-bar-container {
+  position: relative;
+  height: 12px; /* Increased height for better visibility */
+  background-color: #e0e0e0; /* Light gray */
+  border-radius: 6px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+/* Draggable Handle */
+.progress-handle {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 120px; /* Bigger handle size */
+  height: 20px;
+  background-color: #4e4e4e81; /* Gold color */
+  border-radius: 50%;
+  transform: translate(-50%, -50%); /* Center handle */
+  cursor: grab;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Slight shadow for visibility */
+}
+
+.progress-handle:active {
+  cursor: grabbing;
+}
+
+/* Hide the default scrollbar for the bar */
+.progress-bar-container::-webkit-scrollbar {
+  display: none;
+}
+
