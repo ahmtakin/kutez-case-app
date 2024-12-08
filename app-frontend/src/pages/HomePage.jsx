@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import SwiperCore, { Navigation } from 'swiper';
+import SwiperCore, { Navigation, Controller } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
 
 // Register Swiper modules
-SwiperCore.use([Navigation]);
+SwiperCore.use([Navigation, Controller]);
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
   const [selectedColors, setSelectedColors] = useState({});
+  const [mainSwiper, setMainSwiper] = useState(null); // Main Swiper instance
+  const [thumbSwiper, setThumbSwiper] = useState(null); // Thumbnail Swiper instance
 
   // Fetch products with dynamic prices from the backend
   useEffect(() => {
@@ -87,11 +89,23 @@ const HomePage = () => {
 
   return (
     <div className="p-4" style={{ backgroundColor: '#FFFFFF' }}>
+      <h1 className="page-title">
+        Product List 
+      </h1>
+      {/* Main Product Swiper */}
       <Swiper
         loop={true}
         spaceBetween={20}
         slidesPerView={1} // Default for smallest screens
         navigation
+        onSwiper={setMainSwiper} // Link main Swiper instance
+        onSlideChange={(swiper) => {
+          // Update handle position when the slide changes
+          const progress = swiper.realIndex / (products.length - 1);
+          const handle = document.getElementById('progress-handle');
+          const barWidth = document.getElementById('progress-bar-container').offsetWidth;
+          handle.style.left = `${progress * barWidth}px`;
+        }}
         breakpoints={{
           640: { slidesPerView: 1 }, // 1 image for screens 640px and above
           768: { slidesPerView: 2 }, // 2 images for screens 768px and above
@@ -100,17 +114,7 @@ const HomePage = () => {
       >
         {products.map((product, index) => (
           <SwiperSlide key={index}>
-            <div className="product-card"
-            style={{
-              textAlign: 'left', // Align all content to the left
-              padding: '20px',
-              border: '1px solid #E0E0E0',
-              borderRadius: '8px',
-              backgroundColor: '#FFFFFF',
-              boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
-            }}
-            >
-
+            <div className="product-card">
               {/* Product Image */}
               <div
                 className="image-container"
@@ -129,16 +133,7 @@ const HomePage = () => {
               </div>
 
                 {/* Product Name */}
-              <h2
-                className="product-name"
-                style={{
-                  fontSize: '18px',
-                  fontWeight: 'bold',
-                  marginTop: '10px', // Spacing between the image and title
-                  marginBottom: '8px', // Spacing between the title and price
-                  color: '#333333', // Dark color for better visibility
-                }}
-              >
+              <h2 className="product-name">
                 {product.name}
               </h2>
               {/* Product Price */}
@@ -220,22 +215,66 @@ const HomePage = () => {
                 }}
               >
                 {renderStars(product.popularityScore)}
-                <span
-                  style={{
-                    fontSize: '14px', // Slightly smaller than stars
-                    marginLeft: '8px', // Add spacing between stars and number
-                    color: '#333333',
-                  }}
-                >
+                <span>
                   {((product.popularityScore / 100) * 5).toFixed(1)} / 5
                 </span>
               </div>
-
-
             </div>
           </SwiperSlide>
         ))}
-      </Swiper>
+        </Swiper>
+        {/* Progress Bar with Draggable Handle */}
+        <div
+          id="progress-bar-container"
+          className="progress-bar-container"
+          onClick={(e) => {
+            // Calculate slide based on click position
+            const bar = e.currentTarget;
+            const clickX = e.nativeEvent.offsetX;
+            const barWidth = bar.offsetWidth;
+            const progress = clickX / barWidth;
+            const targetIndex = Math.round(progress * (products.length - 1));
+            mainSwiper?.slideToLoop(targetIndex); // Navigate to corresponding slide in the loop
+          }}
+        >
+          {/* Draggable Handle */}
+          <div
+            id="progress-handle"
+            className="progress-handle"
+            
+            draggable="true"
+            onDrag={(e) => {
+              // Handle dragging behavior
+              const bar = document.getElementById('progress-bar-container');
+              const barWidth = bar.offsetWidth;
+              const handleX = e.clientX - bar.getBoundingClientRect().left;
+
+              // Ensure handle stays within bounds
+              if (handleX >= 0 && handleX <= barWidth) {
+                const handle = document.getElementById('progress-handle');
+                handle.style.left = `${handleX}px`;
+
+                // Update Swiper based on handle position
+                const progress = handleX / barWidth;
+                const targetIndex = Math.round(progress * (products.length - 1));
+                mainSwiper?.slideToLoop(targetIndex); // Use `slideToLoop` for loop navigation
+              }
+            }}
+            onDragEnd={(e) => {
+              // Snap the handle to the nearest slide on drag end
+              const bar = document.getElementById('progress-bar-container');
+              const barWidth = bar.offsetWidth;
+              const handleX = e.clientX - bar.getBoundingClientRect().left;
+
+              // Ensure handle stays within bounds
+              if (handleX >= 0 && handleX <= barWidth) {
+                const progress = handleX / barWidth;
+                const targetIndex = Math.round(progress * (products.length - 1));
+                mainSwiper?.slideToLoop(targetIndex); // Use `slideToLoop` for loop navigation
+              }
+            }}
+          ></div>
+        </div>
     </div>
   );
 };
